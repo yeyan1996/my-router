@@ -6,12 +6,16 @@ class HashRouter extends BaseRouter {
     }
 
     push(path) {
-        location.hash = path
+        location.hash = path //将hash替换会将当前route推入路由栈
     }
 
     replace(path) {
         let url = this.getReplaceUrl(path)
-        location.replace(url)
+        location.replace(url) //替换栈顶的路由栈
+    }
+
+    go(n) {
+        window.history.go(n);
     }
 
     hash2path(hash) {
@@ -33,6 +37,10 @@ class HashRouter extends BaseRouter {
 
 
 let routeList = [
+    {
+        path:"/",
+        component:"hello world"
+    },
     {
         path: "/hello",
         component: "hello"

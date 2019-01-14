@@ -5,6 +5,7 @@
     <title>Title</title>
 </head>
 <body>
+<p>History Router</p>
 <div>hello world</div>
 <p>push</p>
 <button>hello</button>
@@ -12,20 +13,17 @@
 <p>replace</p>
 <a href="javascript:void(0)">hello</a>
 <a href="javascript:void(0)">world</a>
-<!--<button></button>-->
 
 <script type="module">
-    import hashRouter from './hashRouter.js'
-
+    import historyRouter from './historyRouter.js'
     let btns = document.querySelectorAll("button")
     let links = document.querySelectorAll("a")
-
     btns.forEach(btn => btn.addEventListener('click', () => {
-            hashRouter.push(`/${btn.innerHTML}`)
+        historyRouter.push(`/${btn.innerHTML}`)
         })
     )
     links.forEach(link => link.addEventListener('click', () => {
-        hashRouter.replace(`/${link.innerHTML}`)
+        historyRouter.replace(`/${link.innerHTML}`)
     }))
 </script>
 </body>
