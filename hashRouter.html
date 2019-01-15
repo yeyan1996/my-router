@@ -7,29 +7,46 @@
 <body>
 <p>Hash Router</p>
 <div>hello world</div>
-<p>push</p>
-<button>hello</button>
-<button>world</button>
-<p>replace</p>
-<a href="javascript:void(0)">hello</a>
-<a href="javascript:void(0)">world</a>
+<div id="push">
+    <p>push</p>
+    <button>hello</button>
+    <button>world</button>
+</div>
+<div id="replace">
+    <p>replace</p>
+    <a href="javascript:void(0)">hello</a>
+    <a href="javascript:void(0)">world</a>
+</div>
 
+<div id="go">
+    <button>go(1)</button>
+    <button>go(-1)</button>
+</div>
 <script type="module">
     import hashRouter from './hashRouter.js'
 
     window.onload = function () {
         location.hash = '/'
     }
-    let btns = document.querySelectorAll("button")
+    let pushBtns = document.querySelector("#push").querySelectorAll("button")
     let links = document.querySelectorAll("a")
 
-    btns.forEach(btn => btn.addEventListener('click', () => {
+    pushBtns.forEach(btn => btn.addEventListener('click', () => {
             hashRouter.push(`/${btn.innerHTML}`)
         })
     )
     links.forEach(link => link.addEventListener('click', () => {
         hashRouter.replace(`/${link.innerHTML}`)
     }))
+
+    let forward = document.querySelector("#go").querySelectorAll('button')[0]
+    let back = document.querySelector("#go").querySelectorAll('button')[1]
+    forward.addEventListener('click', () => {
+        hashRouter.go(1)
+    })
+    back.addEventListener('click', () => {
+        hashRouter.go(-1)
+    })
 </script>
 </body>
 </html>

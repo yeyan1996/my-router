@@ -7,24 +7,42 @@
 <body>
 <p>History Router</p>
 <div>hello world</div>
-<p>push</p>
-<button>hello</button>
-<button>world</button>
-<p>replace</p>
-<a href="javascript:void(0)">hello</a>
-<a href="javascript:void(0)">world</a>
 
+<div id="push">
+    <p>push</p>
+    <button>hello</button>
+    <button>world</button>
+</div>
+<div id="replace">
+    <p>replace</p>
+    <a href="javascript:void(0)">hello</a>
+    <a href="javascript:void(0)">world</a>
+</div>
+<div id="go">
+    <button>go(1)</button>
+    <button>go(-1)</button>
+</div>
 <script type="module">
     import historyRouter from './historyRouter.js'
-    let btns = document.querySelectorAll("button")
-    let links = document.querySelectorAll("a")
-    btns.forEach(btn => btn.addEventListener('click', () => {
-        historyRouter.push(`/${btn.innerHTML}`)
+
+    let pushBtns = document.querySelector("#push").querySelectorAll("button")
+    pushBtns.forEach(btn => btn.addEventListener('click', () => {
+            historyRouter.push(`/${btn.innerHTML}`)
         })
     )
+    let links = document.querySelectorAll("a")
     links.forEach(link => link.addEventListener('click', () => {
         historyRouter.replace(`/${link.innerHTML}`)
     }))
+
+    let forward = document.querySelector("#go").querySelectorAll('button')[0]
+    let back = document.querySelector("#go").querySelectorAll('button')[1]
+    forward.addEventListener('click', () => {
+        historyRouter.go(1)
+    })
+    back.addEventListener('click', () => {
+        historyRouter.go(-1)
+    })
 </script>
 </body>
 </html>

@@ -3,7 +3,13 @@ import BaseRouter from './BaseRouter.js'
 class HistoryRouter extends BaseRouter {
     constructor(routeList) {
         super(routeList)
+        //监听浏览器自身的前进后退事件
+        window.onpopstate = e => {
+            let route = this.matchRoute(location.pathname)
+            this.render(route)
+        }
     }
+
     push(path) {
         /**
          * @description pushState
@@ -22,11 +28,11 @@ class HistoryRouter extends BaseRouter {
         this.render(this.matchRoute(path))
     }
 
-    go(n) {
-        window.history.go(n);
+    go(step) {
+        window.history.go(step);
     }
     matchRoute(path) {
-        return this.routeList.find(route => route.path === path)
+        return this.routeList.find(route => route.path === path )
     }
 }
 
