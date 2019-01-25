@@ -4,7 +4,6 @@ class HashRouter extends BaseRouter {
     constructor(routeList) {
         super(routeList)
         window.onhashchange = function (e) {
-            console.log(location.hash)
             let path = hashRouter.hash2path(location.hash)
             let route = hashRouter.matchRoute(path)
             hashRouter.render(route)

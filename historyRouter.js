@@ -5,6 +5,7 @@ class HistoryRouter extends BaseRouter {
         super(routeList)
         //监听浏览器自身的前进后退事件
         window.onpopstate = e => {
+            console.log(e)
             let route = this.matchRoute(location.pathname)
             this.render(route)
         }
