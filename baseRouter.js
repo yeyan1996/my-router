@@ -1,3 +1,8 @@
+/**
+关于路由栈的解释
+@see http://web.jobbole.com/87227/
+**/
+
 export default class BaseRouter {
     constructor(routeList) {
         this.routeList = routeList
